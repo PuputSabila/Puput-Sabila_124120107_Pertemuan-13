@@ -1,0 +1,4 @@
+invert_time = st.sidebar.checkbox("Balik Sumbu Waktu")
+
+# Potong data sesuai trace yang dipilih
+data_plot = data[:, trace_min:trace_max+1]
