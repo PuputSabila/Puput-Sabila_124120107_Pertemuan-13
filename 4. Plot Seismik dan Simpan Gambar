@@ -1,0 +1,27 @@
+fig, ax = plt.subplots(figsize=(8, 6))
+
+if scale_mode == "Auto":
+    im = ax.imshow(data_plot, cmap=cmap, aspect="auto")
+else:
+    im = ax.imshow(
+        data_plot,
+        cmap=cmap,
+        aspect="auto",
+        vmin=vmin,
+        vmax=vmax
+    )
+
+ax.set_title("Plot Seismik")
+ax.set_xlabel("Trace")
+ax.set_ylabel("Waktu")
+
+if invert_time:
+    ax.invert_yaxis()
+
+plt.colorbar(im, ax=ax, label="Amplitudo")
+st.pyplot(fig)
+
+# Simpan plot
+if st.sidebar.button("Simpan Plot"):
+    fig.savefig("plot_seismik.png", dpi=300)
+    st.sidebar.success("Plot berhasil disimpan!")
