@@ -1,0 +1,6 @@
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Contoh data seismik (waktu x trace)
+data = np.random.randn(500, 100)
