@@ -1,0 +1,31 @@
+st.sidebar.header("Pengaturan Plot")
+
+# Pilihan colormap
+cmap = st.sidebar.selectbox(
+    "Pilih Colormap",
+    ["seismic", "gray", "viridis", "plasma"]
+)
+
+# Mode skala amplitudo
+scale_mode = st.sidebar.radio(
+    "Mode Skala Amplitudo",
+    ["Auto", "Manual"]
+)
+
+# Slider vmin dan vmax (hanya aktif jika Manual)
+vmin, vmax = None, None
+if scale_mode == "Manual":
+    vmin = st.sidebar.slider(
+        "vmin",
+        float(data.min()), float(data.max()), float(data.min())
+    )
+    vmax = st.sidebar.slider(
+        "vmax",
+        float(data.min()), float(data.max()), float(data.max())
+    )
+
+# Pilih rentang trace
+trace_min, trace_max = st.sidebar.slider(
+    "Rentang Trace",
+    0, data.shape[1]-1, (0, data.shape[1]-1)
+)
